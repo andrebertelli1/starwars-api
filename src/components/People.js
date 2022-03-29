@@ -1,32 +1,61 @@
-import React from 'react'
-import { Card, Grid } from 'semantic-ui-react'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
+import { Grid } from 'semantic-ui-react'
 
-export default function People({data}) {
+import '../styles/style.scss'
+
+export default function People() { 
+  let offset = 1;
+  const [ people, setPeople ] = useState([]);
+
+  const loadTenPeople = () => {
+    const tenPeople = [];
+      axios
+      .get(`https://swapi.dev/api/people/?page=${offset}`)
+      .then(({ data }) => {
+        data.results.forEach((p) => tenPeople.push(p));
+        setPeople(oldPeople => [...oldPeople, ...tenPeople])
+      });
+      offset += 1;
+};
+
+  const handleScroll = (e) => {
+    const scrollHeight = e.target.documentElement.scrollHeight;
+    const currentHeight = Math.ceil(
+      e.target.documentElement.scrollTop + window.innerHeight
+    );
+    if (currentHeight + 1 >= scrollHeight && offset <= 9) {
+      loadTenPeople();
+    }
+  }
+
+  useEffect(() => {
+    loadTenPeople();
+    window.addEventListener('scroll', handleScroll)
+  }, [])
+
+  
   return (
-    <>
-      <h1>People</h1>
-      <Grid columns={3}>
-        {data.map((people, i) => {
+      <Grid>
+        {people.map((p, i) => {
           return(
-            <Grid.Column key={i}>
-              <Card>
-                <Card.Content>
-                  <strong>Name</strong>
-                  <Card.Header>{people.name}</Card.Header>
-                  <Card.Description>
-                    <strong>Height</strong>
-                    <p>{people.height}</p>
-                    <strong>Mass</strong>
-                    <p>{people.mass}</p>
-                    <strong>Hair Color</strong>
-                    <p>{people.hair_color}</p>
-                  </Card.Description>
-                </Card.Content>
-              </Card>
-            </Grid.Column>
+            <div className="grid" key={i}>
+                <div className="card">
+                  <div className="content">
+                    <h3>{p.name}</h3>
+                    <div className="description">
+                      <strong>Height</strong>
+                      <p>{p.height}</p>
+                      <strong>Mass</strong>
+                      <p>{p.mass}</p>
+                      <strong>Hair Color</strong>
+                      <p>{p.hair_color}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
           )
         })}
       </Grid>
-    </>
   )
 }

@@ -10,28 +10,20 @@ import People from './components/People'
 import Planets from './components/Planets'
 
 const App = () => {
-  const [people, setPeople] = useState([]);
   const [planets, setPlanets] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function fetchPeople() {
-      let res = await fetch('https://swapi.dev/api/people')
-      let data = await res.json();
-      setPeople(data.results);
-      setLoading(false);
-    }
-
     async function fetchPlanets() {
-      let res = await fetch('https://swapi.dev/api/planets')
+      const URL = `https://swapi.dev/api/planets`
+      let res = await fetch(URL)
       let data = await res.json();
       setPlanets(data.results);
       setLoading(false);
     }
-
-    fetchPeople();
     fetchPlanets();
-  }, [])
+  }, [])   
+
   return (
     <div className="App">
       <Router>
@@ -45,7 +37,7 @@ const App = () => {
           ) : (
             <Routes>
               <Route path="/" exact element={<Home />} />
-              <Route path="/people" exact element={<People data={people} />}/>
+              <Route path="/people" exact element={<People />} />
               <Route path="/planets" exact element={<Planets data={planets} />} />
             </Routes>
           )}

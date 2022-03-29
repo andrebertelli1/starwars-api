@@ -1,6 +1,8 @@
 import React from 'react'
 import { Card, Grid } from 'semantic-ui-react'
 
+import '../styles/style.scss'
+
 export default function Planets({data}) {
   return (
     <>
@@ -27,6 +29,7 @@ export default function Planets({data}) {
           )
         })}
       </Grid>
+      
     </>
   )
 }
