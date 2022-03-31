@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import { Container, Dimmer, Loader } from 'semantic-ui-react'
+import { Container} from 'semantic-ui-react'
 
 import './styles/global.css'
 
@@ -10,8 +10,6 @@ import People from './components/People'
 import Planets from './components/Planets'
 
 const App = () => {
-  const [planets, setPlanets] = useState([]);
-
   return (
     <div className="App">
       <Router>
@@ -20,7 +18,7 @@ const App = () => {
             <Routes>
               <Route path="/" exact element={<Home />} />
               <Route path="/people" exact element={<People />} />
-              <Route path="/planets" exact element={<Planets data={planets} />} />
+              <Route path="/planets" exact element={<Planets />} />
             </Routes>
         </Container>
       </Router>
