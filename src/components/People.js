@@ -36,26 +36,33 @@ export default function People() {
 
   
   return (
-      <Grid>
-        {people.map((p, i) => {
-          return(
-            <div className="grid" key={i}>
-                <div className="card">
-                  <div className="content">
-                    <h3>{p.name}</h3>
-                    <div className="description">
-                      <strong>Height</strong>
-                      <p>{p.height}</p>
-                      <strong>Mass</strong>
-                      <p>{p.mass}</p>
-                      <strong>Hair Color</strong>
-                      <p>{p.hair_color}</p>
+    <>
+      <h1>Peoples</h1>
+        <Grid>
+          {people.map((p, i) => {
+            return(
+              <div className="grid" key={i}>
+                  <div className="card">
+                    <div className="content">
+                      <h3>{p.name}</h3>
+                      <div className="description">
+                        <strong>Height</strong>
+                        <p>{p.height}</p>
+                        <strong>Mass</strong>
+                        <p>{p.mass}</p>
+                        <strong>Hair Color</strong>
+                        <p>{p.hair_color}</p>
+                        <strong>Birthday Year</strong>
+                        <p>{p.birth_year}</p>
+                        <strong>Gender</strong>
+                        <p>{p.gender}</p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-          )
-        })}
-      </Grid>
+            )
+          })}
+        </Grid>
+      </>
   )
 }

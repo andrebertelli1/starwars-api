@@ -13,34 +13,17 @@ const App = () => {
   const [planets, setPlanets] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    async function fetchPlanets() {
-      const URL = `https://swapi.dev/api/planets`
-      let res = await fetch(URL)
-      let data = await res.json();
-      setPlanets(data.results);
-      setLoading(false);
-    }
-    fetchPlanets();
-  }, [])   
-
   return (
     <div className="App">
       <Router>
         <Navbar />
-        
+      
         <Container>
-          {loading ? (
-            <Dimmer active>
-              <Loader inverted>Loading</Loader>
-            </Dimmer>
-          ) : (
             <Routes>
               <Route path="/" exact element={<Home />} />
               <Route path="/people" exact element={<People />} />
               <Route path="/planets" exact element={<Planets data={planets} />} />
             </Routes>
-          )}
         </Container>
       </Router>
     </div>
