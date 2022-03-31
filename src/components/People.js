@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Grid } from 'semantic-ui-react'
 
-import '../styles/style.scss'
+import '../styles/style.css'
 
 export default function People() { 
   let offset = 1;

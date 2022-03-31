@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Grid } from 'semantic-ui-react'
 import axios from 'axios'
 
-import '../styles/style.scss'
+import '../styles/style.css'
 
 export default function Planets() {
   let offset = 1;

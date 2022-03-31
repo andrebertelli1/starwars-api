@@ -1,0 +1,38 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --black: #1c1c1c;
+    --white: #F7F7F7;
+}
+
+body.light {
+    --background-color: var(--white);
+    --text-color: var(--black);
+    --font-weight: 400;
+}
+
+body.dark {
+    --background-color: var(--black);
+    --text-color: var(--white);
+    --font-weight: 500;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-weight: var(--font-weight);
+    transition: background 0.3s ease-in-out, color 0.6s ease-in-out;
+}
+
+body, input, button, textarea {
+    font: 400 16px 'Roboto', sans-serif;
+}
+
+.container {
+    width: 960px;
+    margin: 0 auto;
+}
