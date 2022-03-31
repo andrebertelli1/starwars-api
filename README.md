@@ -1,5 +1,7 @@
 # Star Wars
 
+Você pode aceesa-lo <a href="">aqui</a>
+
 ## 🧪 Tecnologias
 Esse projeto  foi desenvolvido com as seguintes tecnologias:
 * <a href="https://reactjs.org/">ReactJS</a>
